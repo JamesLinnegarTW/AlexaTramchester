@@ -417,7 +417,7 @@ module.exports = [
     },
     {
         "id": "9400ZZMAFIR",
-        "name": "Firswood Station",
+        "name": "Firswood",
         "latLong": {
             "lat": 53.45127,
             "lon": -2.27773
@@ -859,7 +859,7 @@ module.exports = [
     },
     {
         "id": "9400ZZMARRS",
-        "name": "Rochdale Railway Station",
+        "name": "Rochdale Railway",
         "latLong": {
             "lat": 53.61102,
             "lon": -2.15449
