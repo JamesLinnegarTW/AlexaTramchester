@@ -9,7 +9,7 @@ describe("StateProvider", function(){
   })
   it("should throw an error if instantiated without alexa object", function(){
     var create = function(){
-      let t = new StateProvider();
+      var t = new StateProvider();
     }
 
     expect(create).toThrow(new Error("No alexa object provided"));
