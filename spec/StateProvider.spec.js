@@ -2,7 +2,7 @@ var StateProvider = require("../lib/StateProvider");
 
 
 describe("StateProvider", function(){
-  let alexa  = {};
+  var alexa  = {};
 
   beforeEach(function(){
       alexa.attributes = {};
