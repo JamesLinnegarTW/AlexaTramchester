@@ -1,0 +1,22 @@
+{
+  "name": "alexatramchester",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "alexa-sdk": "^1.0.10",
+    "moment-timezone": "^0.5.13",
+    "request": "^2.81.0",
+    "similarity": "^1.1.1",
+    "twilio": "^3.3.0"
+  },
+  "devDependencies": {
+    "jasmine": "^2.6.0",
+    "lambda-local": "^1.4.2"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "author": "",
+  "license": "ISC"
+}
