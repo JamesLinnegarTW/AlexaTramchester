@@ -19,7 +19,7 @@ functions:
     handler: index.handler
     events:
       - alexaSkill
-    environment:]
+    environment:
       TWILIO_SID: ${env:TWILIO_SID}
       TWILIO_AUTH: ${env:TWILIO_AUTH}
       TWILIO_FROM: ${env:TWILIO_FROM}
