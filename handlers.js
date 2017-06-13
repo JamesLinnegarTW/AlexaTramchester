@@ -29,7 +29,7 @@ var handlers = {
               .get('homeStation')
               .then(function(station){
                 requestObject.departure = station;
-                resolve(object);
+                resolve(requestObject);
               }).catch(function(error){
                 console.log(error);
                 reject("You do not have a home station set");
