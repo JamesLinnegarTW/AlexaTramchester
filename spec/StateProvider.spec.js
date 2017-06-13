@@ -47,6 +47,8 @@ describe("StateProvider", function(){
         .then(function(returnValue){
           expect(returnValue).toEqual("result");
           done();
+        }).catch(function () {
+          console.log("Promise Rejected");
         });
     });
 

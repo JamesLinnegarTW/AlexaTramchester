@@ -42,7 +42,10 @@ describe("ResponseFormatter", function(){
       .then(function(returnValue){
         expect(returnValue).toEqual('There is a tram from begin to end at 12:00. summary. You should arrive at 13:00.');
         done();
-      });
+      }).catch(function () {
+        console.log("Promise Rejected");
+        done();
+      })
     });
 
   });
