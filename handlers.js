@@ -140,7 +140,13 @@ var handlers = {
     },
 
     "SMSIntent":  function () {
-      this.emit(':tell', 'This is yet to be implemented');
+      var alexa = this;
+      new SMSIntent()
+        .send("Sample message")
+        .then(function(response){
+          alexa.emit(':tell', response);
+        })
+        .catch(new IntentFailure(alexa).retry);
     },
 
     "LaunchRequest": function () {
