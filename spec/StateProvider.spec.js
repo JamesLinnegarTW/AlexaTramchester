@@ -7,6 +7,7 @@ describe("StateProvider", function(){
   beforeEach(function(){
       alexa.attributes = {};
   })
+
   it("should throw an error if instantiated without alexa object", function(){
     var create = function(){
       var t = new StateProvider();
