@@ -7,7 +7,9 @@ var VoiceRequest = require("./lib/VoiceRequest"),
     ResponseFormatter = require("./lib/ResponseFormatter"),
     SMSService = require('./lib/SMSService'),
     StateProvider = require('./lib/StateProvider'),
-    IntentFailure = require("./lib/IntentFailure");
+    IntentFailure = require("./lib/IntentFailure"),
+    Display = require("./lib/Display"),
+    TwilioClient = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTH);
 
 
 var handlers = {
@@ -141,7 +143,7 @@ var handlers = {
 
     "SMSIntent":  function () {
       var alexa = this;
-      new SMSIntent()
+      new SMSIntent(TwilioClient)
         .send("Sample message")
         .then(function(response){
           alexa.emit(':tell', response);
@@ -150,7 +152,12 @@ var handlers = {
     },
 
     "LaunchRequest": function () {
-      this.emit(':ask', 'Welcome to tramchester', 'You can ask for tram times to and from stations, set your home station and ask for next trams.');
+      var alexa = this;
+      new Display()
+        .show("text", "Welcome to Tramchester")
+        .then(function(){
+          alexa.emit(':ask', 'Welcome to tramchester', 'You can ask for tram times to and from stations, set your home station and ask for next trams.');
+        });
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
