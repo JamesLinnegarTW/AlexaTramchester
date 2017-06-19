@@ -40,6 +40,7 @@ var handlers = {
           });
         })
         .then(new TramchesterService().getTrams)
+        .then(new Display().journey)
         .then(new ResponseFormatter().next)
         .then(function(output){
            response.emit(':tell', output);
@@ -74,6 +75,7 @@ var handlers = {
           });
         })
         .then(new TramchesterService().getTrams)
+        .then(new Display().journey)
         .then(new ResponseFormatter().next)
         .then(function(output){
            response.emit(':tell', output);
@@ -95,6 +97,7 @@ var handlers = {
         .then(new DepartureService(fromStation).getDeparture)
         .then(new DestinationService(toStation).getDestination)
         .then(new TramchesterService().getTrams)
+        .then(new Display().journey)
         .then(new ResponseFormatter().next)
         .then(function(output){
            response.emit(':tell', output);
@@ -109,6 +112,7 @@ var handlers = {
 
       new VoiceRequest()
         .then(new StationParser(station).parse)
+        .then(new Display().station)
         .then(function(stationData){
           var imageURL = "https://maps.googleapis.com/maps/api/staticmap?center=" + stationData.latLong.lat + "," + stationData.latLong.lon + "&scale=2&markers=" + stationData.latLong.lat + "," + stationData.latLong.lon + "&zoom=16&size=400x400&maptype=roadmap&key=" + "AIzaSyBeZoKsacLdCyU9nSbbUBusUAW03SGb1BI";
           response.emit(':tellWithCard', 'Here is ' + stationData.name, stationData.name, "", imageURL);
@@ -122,6 +126,7 @@ var handlers = {
 
       new VoiceRequest()
         .then(new StationParser(station).parse)
+        .then(new Display().station)
         .then(function(stationData){
           return new StateProvider(response).set('homeStation', stationData);
         })
@@ -135,6 +140,7 @@ var handlers = {
       var response = this;
       new StateProvider(this)
         .get('homeStation')
+        .then(new Display().station)
         .then(function(station){
           response.emit(':tell', "Your home station is set to " + station.name);
         })
@@ -143,7 +149,7 @@ var handlers = {
 
     "SMSIntent":  function () {
       var alexa = this;
-      new SMSIntent(TwilioClient)
+      new SMSService(TwilioClient)
         .send("Sample message")
         .then(function(response){
           alexa.emit(':tell', response);
@@ -154,7 +160,7 @@ var handlers = {
     "LaunchRequest": function () {
       var alexa = this;
       new Display()
-        .show("text", "Welcome to Tramchester")
+        .text("Welcome to Tramchester")
         .then(function(){
           alexa.emit(':ask', 'Welcome to tramchester', 'You can ask for tram times to and from stations, set your home station and ask for next trams.');
         })
