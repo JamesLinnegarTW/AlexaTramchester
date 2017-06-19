@@ -157,7 +157,8 @@ var handlers = {
         .show("text", "Welcome to Tramchester")
         .then(function(){
           alexa.emit(':ask', 'Welcome to tramchester', 'You can ask for tram times to and from stations, set your home station and ask for next trams.');
-        });
+        })
+        .catch(new IntentFailure(alexa).retry);
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
