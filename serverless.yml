@@ -20,12 +20,5 @@ functions:
     events:
       - alexaSkill
     environment:
-      TWILIO_SID: ${env:TWILIO_SID}
-      TWILIO_AUTH: ${env:TWILIO_AUTH}
-      TWILIO_FROM: ${env:TWILIO_FROM}
-      TWILIO_TO: ${env:TWILIO_TO}
-      IOT_BROKER_TOPIC: ${env:IOT_BROKER_TOPIC}
-      IOT_BROKER_REGION: ${env:IOT_BROKER_REGION}
-      IOT_BROKER_ENDPOINT: ${env:IOT_BROKER_ENDPOINT}
       TRAMCHESTER_APPID: ${env:TRAMCHESTER_APPID}
       TRAMCHESTER_DB: ${env:TRAMCHESTER_DB}

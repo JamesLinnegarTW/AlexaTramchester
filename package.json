@@ -7,8 +7,7 @@
     "alexa-sdk": "^1.0.10",
     "moment-timezone": "^0.5.13",
     "request": "^2.81.0",
-    "similarity": "^1.1.1",
-    "twilio": "^3.3.0"
+    "similarity": "^1.1.1"
   },
   "devDependencies": {
     "jasmine": "^2.6.0",
